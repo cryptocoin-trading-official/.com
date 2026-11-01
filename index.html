@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Crypto Trading Dashboard</title>
     <!-- iOS native app styling meta tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,51 +15,48 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
     <style>
-    html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        overflow-x: auto;
-        background-color: #020617;
-    }
-    body {
-        margin: 0;
-        padding: 0;
-        background-color: #020617;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
-
-    @media (min-width: 1024px) {
-        body { display: flex; flex-direction: row; }
-        .sidebar { width: 250px; flex-shrink: 0; }
-        .main-content { flex-grow: 1; padding: 20px; }
-    }
-
-    @media (max-width: 1023px) {
-        body { display: flex; flex-direction: column; }
-        .sidebar { width: 100%; padding: 10px; }
-        .main-content { width: 100%; padding: 10px; }
-    }
-
-    .custom-scroll { -webkit-overflow-scrolling: touch; }
-    .custom-scroll::-webkit-scrollbar { width: 4px; }
-    .custom-scroll::-webkit-scrollbar-track { background: #121b2d; }
-</style>     
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #020617; /* Dark slate background */
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.3s ease;
+        }
+        /* Mobile Touch & Safari fixes */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        .custom-scroll {
+            -webkit-overflow-scrolling: touch;
+        }
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #121b2d;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 2px;
+        }
+    </style>
 </head>
-<body class="text-white">
-    <div class="sidebar">
-        <a href="#">Home</a>
-        <a href="#">Trade</a>
-        <a href="#">Wallet</a>
-        <a href="#">Profile</a>
-    </div>
+<body class="text-white flex justify-center items-center">
 
-    <div class="main-content">
+    <!-- Responsive Layout Wrapper (Fills 100% on iPhones, Centers as a premium mock-frame on Computers) -->
+    <div class="w-full h-full md:h-[95vh] max-w-none md:max-w-md bg-[#121b2d] flex flex-col justify-between shadow-2xl relative overflow-hidden transition-all duration-300 md:rounded-3xl md:border md:border-slate-800">
         
-    <!-- Auth (Login / Register) Screen Overlay -->
-        <div id="auth-screen" class="flex flex-col w-full p-6">
+        <!-- Auth (Login / Register) Screen Overlay -->
+        <div id="auth-screen" class="absolute inset-0 bg-[#0b111e] z-50 flex flex-col justify-center items-center p-6">
             <div class="w-full max-w-sm bg-[#121b2d] rounded-2xl border border-slate-800 p-6 space-y-6 shadow-2xl">
-              <class="text-center>
+                <div class="text-center">
                     <span class="text-blue-500 text-4xl font-bold">₿</span>
                     <h2 class="text-2xl font-black text-white mt-2">Crypto Coin</h2>
                     <p class="text-xs text-slate-400 mt-1">Trade crypto derivatives with precision</p>
