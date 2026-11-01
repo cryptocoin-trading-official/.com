@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto Trading Dashboard</title>
     <!-- iOS native app styling meta tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -23,11 +23,20 @@
             background-color: #020617; /* Dark slate background */
         }
         body {
-        display: flex
-        width: 100%;
-        min-width: 1200px;
         margin: 0;
+        padding: 0;
+        background-color: #020617;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    @media (min-width: 1024px) {
+        body { display: flex; flex-direction: row; }
+        .sidebar { width: 250px; flex-shrink: 0; }
+        .main-content { flex-grow: 1; padding: 20px; }
+    }
+    @media (max-width: 1023px) {
+        body { display: flex; flex-direction: column; }
+        .sidebar { width: 100%; }
+        .main-content { width: 100%; padding: 10px; }
     }
         }
         /* Mobile Touch & Safari fixes */
@@ -50,11 +59,10 @@
         }
     </style>
 </head>
-<body class="text-white flex items-center">
-
-    <!-- Responsive Layout Wrapper (Fills 100% on iPhones, Centers as a premium mock-frame on Computers) -->
-    <div class="w-full h-full md:h-[95vh] max-w-none md:max-w-md bg-[#121b2d] flex flex-col justify-between shadow-2xl relative overflow-hidden transition-all duration-300 md:rounded-3xl md:border md:border-slate-800">
-        
+<body class="text-white">
+<div class="sidebar">
+    </div>
+    <div class="main-content">
         <!-- Auth (Login / Register) Screen Overlay -->
         <div id="auth-screen" class="absolute inset-0 bg-[#0b111e] z-50 flex flex-col justify-center items-center p-6">
             <div class="w-full max-w-sm bg-[#121b2d] rounded-2xl border border-slate-800 p-6 space-y-6 shadow-2xl">
