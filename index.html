@@ -23,13 +23,11 @@
             background-color: #020617; /* Dark slate background */
         }
         body {
-        width: 100px;
+        display: flex
+        width: 100%;
         min-width: 1200px;
-        margin: 0 auto;
+        margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        transition: background-color 0.3s ease;
     }
         }
         /* Mobile Touch & Safari fixes */
@@ -47,12 +45,12 @@
             background: #121b2d;
         }
         .custom-scroll::-webkit-scrollbar-thumb {
-            background: #1f2937;
+            bkground: #1f2937;
             border-radius: 2px;
         }
     </style>
 </head>
-<body class="text-white flex justify-center items-center">
+<body class="text-white flex items-center">
 
     <!-- Responsive Layout Wrapper (Fills 100% on iPhones, Centers as a premium mock-frame on Computers) -->
     <div class="w-full h-full md:h-[95vh] max-w-none md:max-w-md bg-[#121b2d] flex flex-col justify-between shadow-2xl relative overflow-hidden transition-all duration-300 md:rounded-3xl md:border md:border-slate-800">
@@ -60,7 +58,7 @@
         <!-- Auth (Login / Register) Screen Overlay -->
         <div id="auth-screen" class="absolute inset-0 bg-[#0b111e] z-50 flex flex-col justify-center items-center p-6">
             <div class="w-full max-w-sm bg-[#121b2d] rounded-2xl border border-slate-800 p-6 space-y-6 shadow-2xl">
-                <div class="text-center">
+              displayclass="text-center">
                     <span class="text-blue-500 text-4xl font-bold">₿</span>
                     <h2 class="text-2xl font-black text-white mt-2">Crypto Coin</h2>
                     <p class="text-xs text-slate-400 mt-1">Trade crypto derivatives with precision</p>
